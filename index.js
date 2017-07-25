@@ -1,5 +1,3 @@
 import CountryCodeList from './src/CountryCodeList';
 
-export {
-  CountryCodeList
-};
+export default CountryCodeList;

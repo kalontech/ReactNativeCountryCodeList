@@ -1,6 +1,6 @@
 {
   "name": "react-native-country-code-list",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Country code list with alphabet navigation for Android/IOS to use with react-native",
   "main": "index.js",
   "repository": {
@@ -12,7 +12,7 @@
     "react-native",
     "react-native-country-code-list",
     "react-native-countries-code-list",
-    "react-native-countries-code",
+    "react-native-countries-code"
   ],
   "author": "Artem Kosiakevych <artem.kosiakevych@eleken.co>",
   "license": "MIT",
@@ -22,7 +22,7 @@
   "homepage": "https://github.com/ElekenAgency/ReactNativeCountryCodeList",
   "scripts": {
     "fix": "eslint --fix",
-    "lint": "eslint .",
+    "lint": "eslint ."
   },
   "dependencies": {
     "react-native-alphabetlistview": "0.2.0",
