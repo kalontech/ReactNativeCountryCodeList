@@ -34,7 +34,7 @@ class CountryCodeListApp extends React.Component {
 ## Props
 All props are optional
 
-! Note if you passing your custom data as list you must also provide renderCell, renderSectionHeader and renderSectionItem functions and search action.
+Note if you will pass custom data as a list you also must provide `renderCell`, `renderSectionHeader`, `renderSectionItem` functions and search action.
 
 | Prop  | Default  | Type | Description |
 | :------------ |:---------------:| :---------------:| :-----|
