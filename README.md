@@ -9,7 +9,7 @@ based on `react-native-alphabetlistview`, also using `react-native-search-box`
 ## Installation
 1. `npm install react-native-country-code-list --save` or
    `yarn add react-native-country-code-list`
-   
+
 ## Demo
 
 ![](./src/countryCodeList.gif)
@@ -38,6 +38,7 @@ Note if you will pass custom data as a list you also must provide `renderCell`, 
 
 | Prop  | Default  | Type | Description |
 | :------------ |:---------------:| :---------------:| :-----|
+| data | country code list object | `object` | custom list data |
 | alphabetListProps | null | `object` | `react-native-alphabetlistview` props |
 | searchProps | null | `object` | `react-native-search-box` props |
 | onClickCell | () => {} | `func` | Callback onClick list item |
