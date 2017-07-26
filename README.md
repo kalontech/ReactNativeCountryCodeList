@@ -39,6 +39,19 @@ All props are optional
 | :------------ |:---------------:| :---------------:| :-----|
 | alphabetListProps | null | `object` | `react-native-alphabetlistview` props |
 | searchProps | null | `object` | `react-native-search-box` props |
+| onClickCell | () => {} | `func` | Callback onClick list item |
+| headerBackground | rgb(245, 245, 245) | `any` | background for headers and search wrapper |
+| cellHeight | 44.5 | `number` | Cell height |
+| sectionHeaderHeight | 30 | `number` | Section header height |
+| renderCell | null | `func` | Custom Cell component |
+| renderSectionItem | null | `func` | Custom Section Item (Alphabet) component |
+| renderSectionHeader | null | `func` | Custom Section header component |
+| sectionHeaderStyle | null | `any` | style section header |
+| sectionHeaderTextStyle | null | `any` | style section header text |
+| sectionItemTextStyle | null | `any` | style section item text |
+| cellStyle | null | `any` | style list item |
+| cellTitleStyle | null | `any` | style list item title |
+| cellLabelStyle | null | `any` | style list item right label|
 
 
 ## Questions or suggestions?
