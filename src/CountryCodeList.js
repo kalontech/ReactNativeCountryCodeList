@@ -62,7 +62,7 @@ class CountryCodeList extends React.Component {
       let data = JSON.parse(JSON.stringify(this.state.data))
       Object.keys(data).map((key)=>{
         data[key] = data[key].filter((el) => {
-          return el.name.toLowerCase().includes(this.state.query.toLowerCase) || el.code.includes(this.state.query)
+          return el.name.toLowerCase().includes(this.state.query.toLowerCase()) || el.code.includes(this.state.query)
         })
         if (data[key].length === 0) {
           delete(data[key])
