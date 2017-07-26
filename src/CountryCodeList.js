@@ -3,7 +3,8 @@ import {
   View,
   Text,
   StyleSheet,
-  TouchableOpacity
+  TouchableOpacity,
+  LayoutAnimation
 } from 'react-native';
 import {getAlphabet} from './data'
 import AlphabetListView from 'react-native-alphabetlistview'
@@ -15,13 +16,27 @@ class CountryCodeList extends React.Component {
     this.renderCell = this.renderCell.bind(this)
     this.renderSectionItem = this.renderSectionItem.bind(this)
     this.renderSectionHeader = this.renderSectionHeader.bind(this)
+    this.onSearch = this.onSearch.bind(this)
+    this.clearQuery = this.clearQuery.bind(this)
+
+    this.state = {
+      data: this.props.data ? this.props.data : getAlphabet(),
+      query: ''
+    }
+  }
+
+  componentWillUpdate() {
+    LayoutAnimation.easeInEaseOut();
   }
 
   render(){
+    let data = this.filterData()
     return (
       <View style={styles.container}>
         <Search
-          onChangeText={this.props.onSearch}
+          afterCancel={this.clearQuery}
+          afterDelete={this.clearQuery}
+          onChangeText={this.props.onSearch ? this.props.onSearch : this.onSearch}
           backgroundColor={this.props.headerBackground}
           titleCancelColor={'rgb(0, 0, 0)'}
           tintColorSearch={'rgb(0, 0, 0)'}
@@ -29,7 +44,8 @@ class CountryCodeList extends React.Component {
           {...this.props.searchProps}
         />
         <AlphabetListView
-          data={this.props.data}
+          enableEmptySections={true}
+          data={data}
           cell={this.renderCell}
           sectionListItem={this.renderSectionItem}
           sectionHeader={this.renderSectionHeader}
@@ -39,6 +55,31 @@ class CountryCodeList extends React.Component {
         />
       </View>
     )
+  }
+
+  filterData(){
+    try {
+      let data = JSON.parse(JSON.stringify(this.state.data))
+      Object.keys(data).map((key)=>{
+        data[key] = data[key].filter((el) => {
+          return el.name.includes(this.state.query) || el.code.includes(this.state.query)
+        })
+        if (data[key].length === 0) {
+          delete(data[key])
+        }
+      })
+      return data
+    } catch (e) {
+      return this.state.data
+    }
+  }
+
+  clearQuery(){
+    this.setState({query: ''})
+  }
+
+  onSearch(query){
+    this.setState({query})
   }
 
   renderSectionHeader(rowData){
@@ -154,7 +195,6 @@ CountryCodeList.defaultProps = {
   headerBackground: 'rgb(245, 245, 245)',
   cellHeight: 44.5,
   sectionHeaderHeight: 30,
-  data: getAlphabet(),
   onClickCell: () => {}
 };
 
