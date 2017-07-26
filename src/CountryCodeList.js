@@ -171,7 +171,7 @@ const styles = StyleSheet.create({
 });
 
 CountryCodeList.propTypes = {
-  data: React.PropTypes.obj,
+  data: React.PropTypes.object,
   // alphabetListProps it is prop react-native-alphabetlistview
   alphabetListProps: React.PropTypes.object,
   // searchProps it is prop react-native-search-box
