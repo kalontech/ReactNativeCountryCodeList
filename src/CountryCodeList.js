@@ -25,10 +25,6 @@ class CountryCodeList extends React.Component {
     }
   }
 
-  componentWillUpdate() {
-    LayoutAnimation.easeInEaseOut();
-  }
-
   render(){
     let data = this.filterData()
     return (
@@ -115,7 +111,7 @@ class CountryCodeList extends React.Component {
         <TouchableOpacity
           onPress={()=>{this.props.onClickCell(rowData.item)}}
           style={[styles.cell, this.props.cellStyle, {height: this.props.cellHeight - 0.5}]}>
-          <Text style={[styles.cellTitle, this.props.cellTitleStyle]}>{rowData.item.name}</Text>
+          <Text numberOfLines={1} style={[styles.cellTitle, this.props.cellTitleStyle]}>{rowData.item.name}</Text>
           <Text style={[styles.cellLabel, this.props.cellLabelStyle]}>{rowData.item.code}</Text>
         </TouchableOpacity>
         <View style={styles.separator}/>
@@ -159,6 +155,8 @@ const styles = StyleSheet.create({
   },
   cellTitle: {
     fontSize: 16,
+    flex: 1,
+    paddingRight: 10,
     color: 'rgb(0, 0, 0)',
   },
   cellLabel: {
