@@ -9,6 +9,7 @@ import {
 import {getAlphabet} from './data'
 import AlphabetListView from 'react-native-alphabetlistview'
 import Search from 'react-native-search-box';
+import _ from 'lodash'
 
 class CountryCodeList extends React.Component {
   constructor(props){
@@ -16,8 +17,6 @@ class CountryCodeList extends React.Component {
     this.renderCell = this.renderCell.bind(this)
     this.renderSectionItem = this.renderSectionItem.bind(this)
     this.renderSectionHeader = this.renderSectionHeader.bind(this)
-    this.onSearch = this.onSearch.bind(this)
-    this.clearQuery = this.clearQuery.bind(this)
 
     this.state = {
       data: this.props.data ? this.props.data : getAlphabet(),
@@ -26,13 +25,12 @@ class CountryCodeList extends React.Component {
   }
 
   render(){
-    let data = this.filterData()
     return (
       <View style={styles.container}>
         <Search
           afterCancel={this.clearQuery}
           afterDelete={this.clearQuery}
-          onChangeText={this.props.onSearch ? this.props.onSearch : this.onSearch}
+          onChangeText={this.props.onSearch ? this.props.onSearch : this.onChangeText}
           backgroundColor={this.props.headerBackground}
           titleCancelColor={'rgb(0, 0, 0)'}
           tintColorSearch={'rgb(0, 0, 0)'}
@@ -41,7 +39,7 @@ class CountryCodeList extends React.Component {
         />
         <AlphabetListView
           enableEmptySections={true}
-          data={data}
+          data={this.state.data}
           cell={this.renderCell}
           sectionListItem={this.renderSectionItem}
           sectionHeader={this.renderSectionHeader}
@@ -53,29 +51,27 @@ class CountryCodeList extends React.Component {
     )
   }
 
-  filterData(){
-    try {
-      let data = JSON.parse(JSON.stringify(this.state.data))
-      Object.keys(data).map((key)=>{
-        data[key] = data[key].filter((el) => {
-          return el.name.toLowerCase().includes(this.state.query.toLowerCase()) || el.code.includes(this.state.query)
-        })
-        if (data[key].length === 0) {
-          delete(data[key])
-        }
+  filterData = _.debounce(() => {
+    const initialData = this.props.data || getAlphabet()
+    let data = JSON.parse(JSON.stringify(initialData))
+    Object.keys(data).map((key)=>{
+      data[key] = data[key].filter((el) => {
+        return el.name.toLowerCase().includes(this.state.query.toLowerCase()) || el.code.includes(this.state.query)
       })
-      return data
-    } catch (e) {
-      return this.state.data
-    }
+      if (data[key].length === 0) {
+        delete(data[key])
+      }
+    })
+    this.setState({data})
+  }, 450)
+
+  clearQuery = () => {
+    this.onChangeText('')
   }
 
-  clearQuery(){
-    this.setState({query: ''})
-  }
-
-  onSearch(query){
+  onChangeText = (query) => {
     this.setState({query})
+    this.filterData()
   }
 
   renderSectionHeader(rowData){

@@ -1,6 +1,6 @@
 {
   "name": "react-native-country-code-list",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Country code list with alphabet navigation for Android/IOS to use with react-native",
   "main": "index.js",
   "repository": {
@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "react-native-alphabetlistview": "0.2.0",
-    "react-native-search-box": "0.0.19"
+    "react-native-search-box": "0.0.19",
+    "lodash": "^4.17.10"
   }
 }
