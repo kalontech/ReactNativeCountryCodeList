@@ -26,6 +26,6 @@
   },
   "dependencies": {
     "react-native-alphabetlistview": "0.2.0",
-    "react-native-search-box": "git+https://github.com/ElekenAgency/react-native-search-box.git"
+    "react-native-search-box": "^0.0.19"
   }
 }
