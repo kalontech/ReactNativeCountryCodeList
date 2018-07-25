@@ -168,28 +168,6 @@ const styles = StyleSheet.create({
   }
 });
 
-CountryCodeList.propTypes = {
-  data: React.PropTypes.object,
-  // alphabetListProps it is prop react-native-alphabetlistview
-  alphabetListProps: React.PropTypes.object,
-  // searchProps it is prop react-native-search-box
-  searchProps: React.PropTypes.object,
-  onSearch: React.PropTypes.func,
-  onClickCell: React.PropTypes.func,
-  headerBackground: React.PropTypes.any,
-  cellHeight: React.PropTypes.number,
-  sectionHeaderHeight: React.PropTypes.number,
-  renderCell: React.PropTypes.func,
-  renderSectionItem: React.PropTypes.func,
-  renderSectionHeader: React.PropTypes.func,
-  sectionHeaderStyle: React.PropTypes.any,
-  sectionHeaderTextStyle: React.PropTypes.any,
-  sectionItemTextStyle: React.PropTypes.any,
-  cellStyle: React.PropTypes.any,
-  cellTitleStyle: React.PropTypes.any,
-  cellLabelStyle: React.PropTypes.any,
-};
-
 CountryCodeList.defaultProps = {
   headerBackground: 'rgb(245, 245, 245)',
   cellHeight: 44.5,
