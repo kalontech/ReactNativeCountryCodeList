@@ -118,8 +118,9 @@ class CountryCodeList extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 63,
-    flex: 1
+    paddingTop: 63,
+    flex: 1,
+    backgroundColor: 'white',
   },
   sectionHeader: {
     justifyContent: 'center',
