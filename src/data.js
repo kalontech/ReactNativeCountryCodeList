@@ -120,7 +120,7 @@ export const getAlphabet = () => {
      { name: 'Jordan', code: '+962', region: 'JO'} ],
   K:
    [ { name: 'Kazakhstan', code: '+77', region: 'KZ'},
-     { name: 'Kenya', code: '+254', 'KE'},
+     { name: 'Kenya', code: '+254', region: 'KE'},
      { name: 'Kiribati', code: '+686', region: 'KI'},
      { name: 'North Korea', code: '+850', region: 'KP'},
      { name: 'South Korea', code: '+82', region: 'KR'},
